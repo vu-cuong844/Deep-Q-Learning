@@ -49,9 +49,10 @@ def select_map():
             print("Please enter a valid number")
 
 class Environment:
-    def __init__(self, is_training=True, selected_map="map1", model_path="models/dqn_model.pth"):
+    def __init__(self, name_map, is_training=True, selected_map="map1", model_path="models/dqn_model.pth"):
         self.is_training = is_training
         self.model_path = model_path
+        self.name_map = name_map
         os.makedirs("models", exist_ok=True)
         os.makedirs("plots", exist_ok=True)
         
@@ -323,7 +324,8 @@ class Environment:
         plt.ylabel('Steps')
         
         plt.tight_layout()
-        plt.savefig(f"plots/training_metrics_ep{self.episode_count}.png")
+        os.makedirs(f"plots/{self.name_map}", exist_ok=True)
+        plt.savefig(f"plots/{self.name_map}/training_metrics_ep{self.episode_count}.png")
         plt.close()
 
     def train(self, max_episodes=1000):
@@ -392,7 +394,7 @@ class Environment:
 
         print(f"Đã lưu đường đi vào {filename}")
 
-    def test(self, episodes=10):
+    def test(self, name_map, episodes=10):
         """Chạy vòng lặp kiểm thử với số lượng episodes cụ thể"""
         running = True
         episode_count = 0
@@ -400,11 +402,11 @@ class Environment:
         current_steps = 0
 
         # Tạo thư mục results nếu chưa tồn tại
-        os.makedirs("results", exist_ok=True)
+        os.makedirs(f"results/{name_map}", exist_ok=True)
 
         # Tạo tên file chung cho tất cả các episode
         timestamp = time.strftime("%Y%m%d_%H%M%S")
-        result_file = f"results/robot_paths_{timestamp}.txt"
+        result_file = f"results/{name_map}/robot_paths_{timestamp}.txt"
 
         # Tạo một danh sách để theo dõi đường đi của episode hiện tại
         current_episode_path = []
@@ -480,21 +482,23 @@ def main():
     if is_training:
         # Configure training
         model_name = f"dqn_{selected_map}_{time.strftime('%Y%m%d_%H%M%S')}.pth"
-        model_path = os.path.join("models", model_name)
+        model_path = os.path.join(f"models\{selected_map}", model_name)
+        model_dir = os.path.dirname(model_path)
+        os.makedirs(model_dir, exist_ok=True)
         max_episodes = int(input("Enter number of training episodes (default 1000): ") or "1000")
         
         # Initialize and run training
-        env = Environment(is_training=True, selected_map=selected_map, model_path=model_path)
+        env = Environment(is_training=True, name_map=selected_map, selected_map=selected_map, model_path=model_path)
         model_path = env.train(max_episodes=max_episodes)
         
         # Ask if user wants to test the trained model
         test_after = input("Test the trained model? (y/n): ").lower() == 'y'
         if test_after:
-            env = Environment(is_training=False, selected_map=selected_map, model_path=model_path)
-            env.test(episodes=5)
+            env = Environment(is_training=False, name_map=select_map, selected_map=selected_map, model_path=model_path)
+            env.test(selected_map ,episodes=5)
     else:
         # List available models
-        models_dir = "models"
+        models_dir = f"models\{selected_map}"
         if not os.path.exists(models_dir) or not os.listdir(models_dir):
             print("No trained models found. Please train a model first.")
             return
@@ -517,8 +521,8 @@ def main():
         
         # Configure and run testing
         test_episodes = int(input("Enter number of test episodes (default 10): ") or "10")
-        env = Environment(is_training=False, selected_map=selected_map, model_path=model_path)
-        env.test(episodes=test_episodes)
+        env = Environment(is_training=False, name_map=selected_map, selected_map=selected_map, model_path=model_path)
+        env.test(selected_map ,episodes=test_episodes)
 
     pygame.quit()
 

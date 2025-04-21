@@ -235,112 +235,160 @@ maps = {
         ]
     },
     "map4": {
-        "Start": (1, 1),  # Điểm xanh lá ở góc trên trái
-        "Goal": (30, 30),  # Điểm đỏ ở góc dưới phải
+        "Start": (1, 1),  # Điểm bắt đầu
+        "Goal": (30, 30),  # Điểm kết thúc
         "Obstacles": [
-            # Hàng 1
+            # Hàng 1 - các thanh ngang
             {
-                "x": 110,  # cell 5
-                "y": 110,  # cell 2
-                "width": 220,
-                "height": 20,
+                "x": 150,
+                "y": 110,  # Giảm xuống
+                "width": 150,
+                "height": 16,
                 "static": True,
                 "angle": 0
             },
+            {
+                "x": 390,
+                "y": 110,  # Giảm xuống
+                "width": 150,
+                "height": 16,
+                "static": True,
+                "angle": 0
+            },
+
             # Hàng 2
             {
-                "x": 190,  # cell 10
-                "y": 430,  # cell 5
-                "width": 220,
-                "height": 20,
+                "x": 230,
+                "y": 150,  # Giảm xuống
+                "width": 150,
+                "height": 16,
                 "static": True,
                 "angle": 0
             },
+
             # Hàng 3
             {
-                "x": 110,  # cell 5
-                "y": 170,  # cell 8
-                "width": 220,
-                "height": 20,
+                "x": 150,
+                "y": 190,  # Giảm xuống
+                "width": 150,
+                "height": 16,
                 "static": True,
                 "angle": 0
             },
+            {
+                "x": 390,
+                "y": 190,  # Giảm xuống
+                "width": 150,
+                "height": 16,
+                "static": True,
+                "angle": 0
+            },
+
             # Hàng 4
             {
-                "x": 190,  # cell 10
-                "y": 230,  # cell 11
-                "width": 220,
-                "height": 20,
+                "x": 230,
+                "y": 230,  # Giảm xuống
+                "width": 150,
+                "height": 16,
                 "static": True,
                 "angle": 0
             },
+
             # Hàng 5
             {
-                "x": 110,  # cell 5
-                "y": 290,  # cell 14
-                "width": 220,
-                "height": 20,
+                "x": 150,
+                "y": 270,  # Giảm xuống
+                "width": 150,
+                "height": 16,
                 "static": True,
                 "angle": 0
             },
+            {
+                "x": 390,
+                "y": 270,  # Giảm xuống
+                "width": 150,
+                "height": 16,
+                "static": True,
+                "angle": 0
+            },
+
             # Hàng 6
             {
-                "x": 190,  # cell 10
-                "y": 350,  # cell 17
-                "width": 220,
-                "height": 20,
+                "x": 230,
+                "y": 310,  # Giảm xuống
+                "width": 150,
+                "height": 16,
                 "static": True,
                 "angle": 0
             },
+
             # Hàng 7
             {
-                "x": 110,  # cell 5
-                "y": 410,  # cell 20
-                "width": 220,
-                "height": 20,
+                "x": 150,
+                "y": 350,  # Giảm xuống
+                "width": 150,
+                "height": 16,
                 "static": True,
                 "angle": 0
-            }
-            # # Chướng ngại vật động - đối tượng màu tím
-            # {
-            #     "x": 70,  # cell 3
-            #     "y": 170,  # cell 8
-            #     "width": 20,
-            #     "height": 20,
-            #     "static": False,
-            #     "velocity": [0, 1.0],
-            #     "y_bound": (170, 290)
-            # },
-            # # Chướng ngại vật động - đối tượng màu xanh dương (trên)
-            # {
-            #     "x": 110,  # cell 5
-            #     "y": 30,  # cell 1
-            #     "width": 20,
-            #     "height": 20,
-            #     "static": False,
-            #     "velocity": [1.0, 0],
-            #     "x_bound": (110, 350)
-            # },
-            # # Chướng ngại vật động - đối tượng màu xanh dương (dưới)
-            # {
-            #     "x": 110,  # cell 5
-            #     "y": 350,  # cell 17
-            #     "width": 20,
-            #     "height": 20,
-            #     "static": False,
-            #     "velocity": [1.0, 0],
-            #     "x_bound": (110, 350)
-            # },
-            # # Đối tượng màu hồng 
-            # {
-            #     "x": 430,  # cell 25
-            #     "y": 170,  # cell 8
-            #     "width": 20,
-            #     "height": 20,
-            #     "static": False,
-            #     "velocity": [0, 1.0],
-            #     "y_bound": (170, 290)
-            # }
+            },
+            {
+                "x": 390,
+                "y": 350,  # Giảm xuống
+                "width": 150,
+                "height": 16,
+                "static": True,
+                "angle": 0
+            },
+
+            # Hàng 8
+            {
+                "x": 230,
+                "y": 390,  # Giảm xuống
+                "width": 150,
+                "height": 16,
+                "static": True,
+                "angle": 0
+            },
+
+            # Hàng 9
+            {
+                "x": 150,
+                "y": 430,  # Giảm xuống
+                "width": 150,
+                "height": 16,
+                "static": True,
+                "angle": 0
+            },
+            {
+                "x": 390,
+                "y": 430,  # Giảm xuống
+                "width": 150,
+                "height": 16,
+                "static": True,
+                "angle": 0
+            },
+
+            # Chướng ngại vật động (tam giác xanh lam)
+            {
+                "x": 80,
+                "y": 290,  # Điều chỉnh theo tọa độ y mới của hàng 5
+                "width": 20,
+                "height": 20,
+                "static": False,
+                "velocity": [1.0, 0],
+                "x_bound": (80, 120),
+                "y_bound": (290, 290)  # Điều chỉnh theo tọa độ y mới
+            },
+            {
+                "x": 500,
+                "y": 400,  # Điều chỉnh theo tọa độ y mới của hàng 3
+                "width": 20,
+                "height": 20,
+                "static": False,
+                "velocity": [-1.0, 0],
+                "x_bound": (350, 500),
+                "y_bound": (400, 400)  # Điều chỉnh theo tọa độ y mới
+            },
         ]
-    }       
-}   
+    }
+}       
