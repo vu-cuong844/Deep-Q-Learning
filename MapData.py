@@ -1,394 +1,625 @@
-# Định nghĩa các map với thông tin về Start, Goal, và Obstacles
-# Start và Goal giờ đây được định nghĩa bằng chỉ số ô lưới (grid_x, grid_y)
+# Start và Goal được định nghĩa bằng chỉ số ô lưới (grid_x, grid_y)
 maps = {
     "map1": {
-        "Start": (1, 16),  # Ô (1, 16) trên lưới 32x32
-        "Goal": (30, 5),   # Ô (30, 5) trên lưới 32x32
+        "Start": (1, 16),
+        "Goal": (30, 5),
         "Obstacles": [
-            # Chướng ngại vật tĩnh (màu đen, xoay góc)
             {
-                "x": 126,  # env_padding + cell_size * 8
-                "y": 110,  # env_padding + cell_size * 5
+                "x": 126,
+                "y": 110,
                 "width": 100,
                 "height": 30,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
             {
-                "x": 430,  # env_padding + cell_size * 25
-                "y": 270,  # env_padding + cell_size * 15
+                "x": 430,
+                "y": 270,
                 "width": 30,
                 "height": 150,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
             {
-                "x": 222,  # env_padding + cell_size * 12
-                "y": 430,  # env_padding + cell_size * 25
+                "x": 222,
+                "y": 430,
                 "width": 100,
                 "height": 30,
                 "static": True,
-                "angle": 45
+                "angle": 45,
             },
-            # Chướng ngại vật động (màu xanh nhạt)
             {
-                "x": 270,  # env_padding + cell_size * 15
-                "y": 190,  # env_padding + cell_size * 10
+                "x": 270,
+                "y": 190,
                 "width": 30,
                 "height": 30,
                 "static": False,
-                "velocity": [1.5, 0],  # Giảm từ 1.5 xuống 0.5
-                "x_bound": (110, 430),  # env_padding + cell_size * 5, env_padding + cell_size * 25
-                "y_bound": (190, 190)
+                "velocity": [1.5, 0],
+                "x_bound": (110, 430),
+                "y_bound": (190, 190),
             },
             {
-                "x": 110,  # env_padding + cell_size * 5
-                "y": 350,  # env_padding + cell_size * 20
+                "x": 110,
+                "y": 350,
                 "width": 30,
                 "height": 30,
                 "static": False,
-                "path": [
-                    (110, 350),  # env_padding + cell_size * 5, env_padding + cell_size * 20
-                    (190, 430),  # env_padding + cell_size * 10, env_padding + cell_size * 25
-                    (270, 350),  # env_padding + cell_size * 15, env_padding + cell_size * 20
-                    (190, 270),  # env_padding + cell_size * 10, env_padding + cell_size * 15
-                    (110, 350)   # env_padding + cell_size * 5, env_padding + cell_size * 20
-                ]
-            }
+                "path": [(110, 350), (190, 430), (270, 350), (190, 270), (110, 350)],
+            },
         ]
     },
     "map2": {
-        "Start": (1, 1),   # Góc trên trái
-        "Goal": (30, 30),  # Góc dưới phải
+        "Start": (1, 1),
+        "Goal": (30, 30),
         "Obstacles": [
-            # Chướng ngại vật tĩnh
             {
-                "x": 190,  # env_padding + cell_size * 10
-                "y": 190,  # env_padding + cell_size * 10
+                "x": 190,
+                "y": 190,
                 "width": 150,
                 "height": 30,
                 "static": True,
-                "angle": 30
+                "angle": 30,
             },
             {
-                "x": 350,  # env_padding + cell_size * 20
-                "y": 350,  # env_padding + cell_size * 20
+                "x": 350,
+                "y": 350,
                 "width": 30,
                 "height": 150,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-            # Chướng ngại vật động
             {
-                "x": 270,  # env_padding + cell_size * 15
-                "y": 270,  # env_padding + cell_size * 15
+                "x": 270,
+                "y": 270,
                 "width": 30,
                 "height": 30,
                 "static": False,
-                "velocity": [2.0, 1.0],  # Giảm từ 2.0, 1.0 xuống 0.5, 0.5
+                "velocity": [2.0, 1.0],
                 "x_bound": (110, 430),
-                "y_bound": (110, 430)
-            }
+                "y_bound": (110, 430),
+            },
         ]
     },
-
     "map3": {
-        "Start": (1, 1),  # Green circle in top-left corner
-        "Goal": (30, 30),  # Red circle in bottom-right corner
+        "Start": (1, 1),
+        "Goal": (30, 30),
         "Obstacles": [
-            # Black diamond obstacles arranged in a grid pattern
-            # Row 1
             {
-                "x": 110,  # cell 5
-                "y": 110,  # cell 5
+                "x": 110,
+                "y": 110,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45  # Diamond shape
+                "angle": 45,
             },
             {
-                "x": 190,  # cell 10
-                "y": 110,  # cell 5
+                "x": 190,
+                "y": 110,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 270,  # cell 15
-                "y": 110,  # cell 5
+                "x": 270,
+                "y": 110,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 350,  # cell 20
-                "y": 110,  # cell 5
+                "x": 350,
+                "y": 110,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
-            },
-
-            # Row 2
-            {
-                "x": 110,  # cell 5
-                "y": 190,  # cell 10
-                "width": 30,
-                "height": 30,
-                "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 190,  # cell 10
-                "y": 190,  # cell 10
+                "x": 110,
+                "y": 190,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 270,  # cell 15
-                "y": 190,  # cell 10
+                "x": 190,
+                "y": 190,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 350,  # cell 20
-                "y": 190,  # cell 10
+                "x": 270,
+                "y": 190,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
-            },
-
-            # Row 3
-            {
-                "x": 110,  # cell 5
-                "y": 270,  # cell 15
-                "width": 30,
-                "height": 30,
-                "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 190,  # cell 10
-                "y": 270,  # cell 15
+                "x": 350,
+                "y": 190,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 270,  # cell 15
-                "y": 270,  # cell 15
+                "x": 110,
+                "y": 270,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 350,  # cell 20
-                "y": 270,  # cell 15
+                "x": 190,
+                "y": 270,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
-            },
-
-            # Row 4
-            {
-                "x": 110,  # cell 5
-                "y": 350,  # cell 20
-                "width": 30,
-                "height": 30,
-                "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 190,  # cell 10
-                "y": 350,  # cell 20
+                "x": 270,
+                "y": 270,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 270,  # cell 15
-                "y": 350,  # cell 20
+                "x": 350,
+                "y": 270,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
+                "angle": 45,
             },
             {
-                "x": 350,  # cell 20
-                "y": 350,  # cell 20
+                "x": 110,
+                "y": 350,
                 "width": 30,
                 "height": 30,
                 "static": True,
-                "angle": 45
-            }
+                "angle": 45,
+            },
+            {
+                "x": 190,
+                "y": 350,
+                "width": 30,
+                "height": 30,
+                "static": True,
+                "angle": 45,
+            },
+            {
+                "x": 270,
+                "y": 350,
+                "width": 30,
+                "height": 30,
+                "static": True,
+                "angle": 45,
+            },
+            {
+                "x": 350,
+                "y": 350,
+                "width": 30,
+                "height": 30,
+                "static": True,
+                "angle": 45,
+            },
         ]
     },
     "map4": {
-        "Start": (1, 1),  # Điểm bắt đầu
-        "Goal": (30, 30),  # Điểm kết thúc
+        "Start": (1, 1),
+        "Goal": (30, 30),
         "Obstacles": [
-            # Hàng 1 - các thanh ngang
             {
                 "x": 150,
-                "y": 110,  # Giảm xuống
+                "y": 110,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
             {
                 "x": 390,
-                "y": 110,  # Giảm xuống
+                "y": 110,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-
-            # Hàng 2
             {
                 "x": 230,
-                "y": 150,  # Giảm xuống
+                "y": 150,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-
-            # Hàng 3
             {
                 "x": 150,
-                "y": 190,  # Giảm xuống
+                "y": 190,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
             {
                 "x": 390,
-                "y": 190,  # Giảm xuống
+                "y": 190,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-
-            # Hàng 4
             {
                 "x": 230,
-                "y": 230,  # Giảm xuống
+                "y": 230,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-
-            # Hàng 5
             {
                 "x": 150,
-                "y": 270,  # Giảm xuống
+                "y": 270,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
             {
                 "x": 390,
-                "y": 270,  # Giảm xuống
+                "y": 270,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-
-            # Hàng 6
             {
                 "x": 230,
-                "y": 310,  # Giảm xuống
+                "y": 310,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-
-            # Hàng 7
             {
                 "x": 150,
-                "y": 350,  # Giảm xuống
+                "y": 350,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
             {
                 "x": 390,
-                "y": 350,  # Giảm xuống
+                "y": 350,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-
-            # Hàng 8
             {
                 "x": 230,
-                "y": 390,  # Giảm xuống
+                "y": 390,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-
-            # Hàng 9
             {
                 "x": 150,
-                "y": 430,  # Giảm xuống
+                "y": 430,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
             {
                 "x": 390,
-                "y": 430,  # Giảm xuống
+                "y": 430,
                 "width": 150,
                 "height": 16,
                 "static": True,
-                "angle": 0
+                "angle": 0,
             },
-
-            # Chướng ngại vật động (tam giác xanh lam)
             {
                 "x": 80,
-                "y": 290,  # Điều chỉnh theo tọa độ y mới của hàng 5
+                "y": 290,
                 "width": 20,
                 "height": 20,
                 "static": False,
                 "velocity": [1.0, 0],
                 "x_bound": (80, 120),
-                "y_bound": (290, 290)  # Điều chỉnh theo tọa độ y mới
+                "y_bound": (290, 290),
             },
             {
                 "x": 500,
-                "y": 400,  # Điều chỉnh theo tọa độ y mới của hàng 3
+                "y": 400,
                 "width": 20,
                 "height": 20,
                 "static": False,
                 "velocity": [-1.0, 0],
                 "x_bound": (350, 500),
-                "y_bound": (400, 400)  # Điều chỉnh theo tọa độ y mới
+                "y_bound": (400, 400),
             },
         ]
-    }
-}       
+    },
+    "map5": {
+        "Start": (1, 1),
+        "Goal": (28, 28),
+        "Obstacles": [
+            {
+                "x": 139.0,
+                "y": 95.0,
+                "width": 20,
+                "height": 64,
+                "static": True,
+                "angle": 15,
+            },
+            {
+                "x": 181.5,
+                "y": 55.0,
+                "width": 17,
+                "height": 46,
+                "static": True,
+                "angle": 15,
+            },
+            {
+                "x": 228.0,
+                "y": 62.5,
+                "width": 20,
+                "height": 61,
+                "static": True,
+                "angle": 15,
+            },
+            {
+                "x": 209.5,
+                "y": 129.0,
+                "width": 17,
+                "height": 58,
+                "static": True,
+                "angle": 15,
+            },
+            {
+                "x": 280.5,
+                "y": 76.5,
+                "width": 15,
+                "height": 67,
+                "static": True,
+                "angle": 15,
+            },
+            {
+                "x": 257.0,
+                "y": 160.0,
+                "width": 24,
+                "height": 70,
+                "static": True,
+                "angle": 15,
+            },
+            {
+                "x": 377.0,
+                "y": 186.5,
+                "width": 82,
+                "height": 73,
+                "static": True,
+                "angle": 30,
+            },
+            {
+                "x": 452.0,
+                "y": 156.0,
+                "width": 62,
+                "height": 80,
+                "static": True,
+                "angle": 30,
+            },
+            {
+                "x": 457.5,
+                "y": 236.5,
+                "width": 81,
+                "height": 79,
+                "static": True,
+                "angle": 30,
+            },
+            {
+                "x": 111.5,
+                "y": 231.0,
+                "width": 83,
+                "height": 68,
+                "static": True,
+                "angle": 100,
+            },
+            {
+                "x": 74.0,
+                "y": 304.0,
+                "width": 80,
+                "height": 78,
+                "static": True,
+                "angle": 100,
+            },
+            {
+                "x": 184.0,
+                "y": 271.0,
+                "width": 36,
+                "height": 40,
+                "static": True,
+                "angle": 100,
+            },
+            {
+                "x": 217.0,
+                "y": 289.5,
+                "width": 34,
+                "height": 37,
+                "static": True,
+                "angle": 100,
+            },
+            {
+                "x": 324.5,
+                "y": 344.5,
+                "width": 147,
+                "height": 51,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 120.0,
+                "y": 393.5,
+                "width": 52,
+                "height": 61,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 183.0,
+                "y": 405.0,
+                "width": 52,
+                "height": 76,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 120.0,
+                "y": 464.0,
+                "width": 52,
+                "height": 58,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 182.0,
+                "y": 473.0,
+                "width": 40,
+                "height": 46,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 48.5,
+                "y": 463.0,
+                "width": 35,
+                "height": 48,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 72.5,
+                "y": 537.0,
+                "width": 65,
+                "height": 36,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 314.5,
+                "y": 441.0,
+                "width": 81,
+                "height": 70,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 273.5,
+                "y": 526.5,
+                "width": 41,
+                "height": 31,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 343.0,
+                "y": 505.0,
+                "width": 58,
+                "height": 36,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 423.5,
+                "y": 365.5,
+                "width": 13,
+                "height": 67,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 456.0,
+                "y": 366.5,
+                "width": 12,
+                "height": 67,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 442.0,
+                "y": 435.5,
+                "width": 16,
+                "height": 57,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 402.5,
+                "y": 486.5,
+                "width": 15,
+                "height": 53,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 512.5,
+                "y": 501.5,
+                "width": 13,
+                "height": 65,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 391.0,
+                "y": 48.5,
+                "width": 30,
+                "height": 35,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 422.0,
+                "y": 56.5,
+                "width": 24,
+                "height": 29,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 454.0,
+                "y": 70.5,
+                "width": 24,
+                "height": 31,
+                "static": True,
+                "angle": -30,
+            },
+            {
+                "x": 491.5,
+                "y": 89.0,
+                "width": 15,
+                "height": 34,
+                "static": True,
+                "angle": 0,
+            },
+            {
+                "x": 518.0,
+                "y": 78.5,
+                "width": 14,
+                "height": 41,
+                "static": True,
+                "angle": 0,
+            },
+        ]
+    },
+}
